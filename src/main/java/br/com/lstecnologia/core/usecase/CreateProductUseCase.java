@@ -24,19 +24,17 @@ public class CreateProductUseCase implements CreateProductService {
     @Override
     public ProductResponseDto execute(@Valid ProductRequestDto productRequestDto) {
 
-        ProductEntity productEntity = productMapper.toEntity(
-                productMapper.toDomain(productRequestDto)
-        );
+        ProductDomain productDomain = productMapper.toDomain(productRequestDto);
+        ProductEntity productEntity = productMapper.toEntity(productDomain);
 
         if(createProductRepository.existsByName(productEntity.getName())) {
             throw new ExistsProductByNameException("Exists product by name");
         }
 
-        return productMapper.toResponseDto(
-                productMapper.toDomain(
-                        createProductRepository.save(productEntity)
-                )
-        );
+        productEntity = createProductRepository.save(productEntity);
+        productDomain = productMapper.toDomain(productEntity);
+
+        return productMapper.toResponseDto(productDomain);
     }
 
 }

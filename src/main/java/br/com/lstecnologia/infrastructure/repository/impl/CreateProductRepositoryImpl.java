@@ -14,7 +14,8 @@ public class CreateProductRepositoryImpl implements CreateProductRepository {
 
     @Override
     public ProductEntity save(ProductEntity productEntity) {
-        return productRepository.save(productEntity);
+        ProductEntity saved = productRepository.save(productEntity);
+        return saved;
     }
 
     @Override
