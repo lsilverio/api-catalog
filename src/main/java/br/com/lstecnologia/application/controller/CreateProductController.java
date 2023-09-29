@@ -1,6 +1,7 @@
 package br.com.lstecnologia.application.controller;
 
 import br.com.lstecnologia.application.controller.dto.request.ProductRequestDto;
+import br.com.lstecnologia.application.controller.dto.response.ErrorResponseDto;
 import br.com.lstecnologia.application.controller.dto.response.ProductResponseDto;
 import br.com.lstecnologia.application.service.CreateProductService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,11 +26,11 @@ public class CreateProductController {
 
     private final CreateProductService createProductService;
 
-    @Operation(summary = "Criar Produto",
-            description = "Cria um novo produto com as informações fornecidas.")
-    @ApiResponse(responseCode = "201",
-            description = "Produto criado com sucesso.",
-            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))})
+    @Operation(summary = "Criar Produto", description = "Cria um novo produto com as informações fornecidas.")
+    @ApiResponse(responseCode = "201", description = "Produto criado com sucesso.",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class)))
+    @ApiResponse(responseCode = "400", description = "Já existe um produto com o mesmo nome.",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseDto.class)))
     @PostMapping
     public ResponseEntity<ProductResponseDto> execute(@Valid @RequestBody ProductRequestDto productRequestDto) {
 

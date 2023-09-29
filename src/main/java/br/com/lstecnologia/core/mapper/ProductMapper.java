@@ -6,9 +6,7 @@ import br.com.lstecnologia.core.domain.ProductDomain;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import org.mapstruct.Mapper;
 
-import java.time.LocalDateTime;
-
-@Mapper(componentModel = "spring", imports = LocalDateTime.class)
+@Mapper(componentModel = "spring")
 public interface ProductMapper {
 
     ProductDomain toDomain(ProductEntity productEntity);
