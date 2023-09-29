@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  api-catalog:
+    image: api-catalog-image
+    container_name: api-catalog-container
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    networks:
+      - api-catalog-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_api_catalog
+    hostname: mysql
+    restart: always
+    environment:
+      - MYSQL_DATABASE=api_catalog
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - api-catalog-network
+    ports:
+      - '3306:3306'
+    volumes:
+      - C:\ambiente-desenvovimento\docker\db-data\mysql:/data/db
+networks:
+  api-catalog-network:
+    name: api-catalog-network

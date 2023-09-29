@@ -6,10 +6,12 @@ import br.com.lstecnologia.core.domain.ProductDomain;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@ActiveProfiles("test")
 public class ProductMapperTest {
 
     private final ProductMapper productMapper = Mappers.getMapper(ProductMapper.class);
