@@ -13,8 +13,7 @@ Bem-vindo à API de Catálogo de Produtos! Esta API está sendo contruída segui
 - Spring Validation
 - Springdoc OpenAPI
 - Spring Boot Actuator
-- Jackson Databind
-- Jackson Datatype JSR310
+- Jackson
 - H2 Database (para testes)
 - Maven (Gerenciador de Dependências e Build)
 
