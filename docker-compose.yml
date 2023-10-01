@@ -24,7 +24,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - C:\ambiente-desenvovimento\docker\db-data\mysql:/data/db
+      - ./db-data/mysql:/var/lib/mysql
 networks:
   api-catalog-network:
     name: api-catalog-network
