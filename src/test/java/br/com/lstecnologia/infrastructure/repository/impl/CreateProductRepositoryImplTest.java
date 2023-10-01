@@ -1,5 +1,6 @@
 package br.com.lstecnologia.infrastructure.repository.impl;
 
+import br.com.lstecnologia.core.usecase.repository.ExistsByNameProductRepository;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import br.com.lstecnologia.infrastructure.repository.JpaProductRepository;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -23,6 +23,8 @@ public class CreateProductRepositoryImplTest {
 
     private CreateProductRepositoryImpl createProductRepository;
 
+    private ExistsByNameProductRepository existsByNameProductRepository;
+
     @Test
     public void testSaveProductEntity() {
         ProductEntity productEntity = new ProductEntity();
@@ -33,7 +35,7 @@ public class CreateProductRepositoryImplTest {
 
         createProductRepository = new CreateProductRepositoryImpl(productRepository);
 
-        ProductEntity savedProduct = createProductRepository.save(productEntity);
+        ProductEntity savedProduct = createProductRepository.execute(productEntity);
 
         assertNotNull(savedProduct);
         assertNotNull(savedProduct.getId());
@@ -49,9 +51,10 @@ public class CreateProductRepositoryImplTest {
         when(productRepository.existsByName("NonExistingProduct")).thenReturn(false);
 
         createProductRepository = new CreateProductRepositoryImpl(productRepository);
+        existsByNameProductRepository = new ExistsByNameProductRepositoryImpl(productRepository);
 
-        assertTrue(createProductRepository.existsByName("ExistingProduct"));
-        assertFalse(createProductRepository.existsByName("NonExistingProduct"));
+        assertTrue(existsByNameProductRepository.execute("ExistingProduct"));
+        assertFalse(existsByNameProductRepository.execute("NonExistingProduct"));
 
         verify(productRepository, times(1)).existsByName("ExistingProduct");
         verify(productRepository, times(1)).existsByName("NonExistingProduct");

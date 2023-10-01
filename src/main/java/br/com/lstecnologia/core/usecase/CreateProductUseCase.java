@@ -7,6 +7,7 @@ import br.com.lstecnologia.core.domain.ProductDomain;
 import br.com.lstecnologia.core.exception.ExistsProductByNameException;
 import br.com.lstecnologia.core.mapper.ProductMapper;
 import br.com.lstecnologia.core.usecase.repository.CreateProductRepository;
+import br.com.lstecnologia.core.usecase.repository.ExistsByNameProductRepository;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,18 +21,21 @@ public class CreateProductUseCase implements CreateProductService {
 
     private final ProductMapper productMapper;
     private final CreateProductRepository createProductRepository;
+    private final ExistsByNameProductRepository existsByNameProductRepository;
 
     @Override
     public ProductResponseDto execute(@Valid ProductRequestDto productRequestDto) {
 
-        ProductDomain productDomain = productMapper.toDomain(productRequestDto);
-        ProductEntity productEntity = productMapper.toEntity(productDomain);
-
-        if(createProductRepository.existsByName(productEntity.getName())) {
+        if(existsByNameProductRepository.execute(productRequestDto.name())) {
             throw new ExistsProductByNameException("Exists product by name");
         }
 
-        productEntity = createProductRepository.save(productEntity);
+        ProductDomain productDomain = productMapper.toDomain(productRequestDto);
+
+        ProductEntity productEntity = createProductRepository.execute(
+                productMapper.toEntity(productDomain)
+        );
+
         productDomain = productMapper.toDomain(productEntity);
 
         return productMapper.toResponseDto(productDomain);

@@ -6,17 +6,18 @@ import br.com.lstecnologia.core.domain.ProductDomain;
 import br.com.lstecnologia.core.exception.ExistsProductByNameException;
 import br.com.lstecnologia.core.mapper.ProductMapper;
 import br.com.lstecnologia.core.usecase.repository.CreateProductRepository;
+import br.com.lstecnologia.core.usecase.repository.ExistsByNameProductRepository;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 public class CreateProductUseCaseTest {
@@ -30,10 +31,13 @@ public class CreateProductUseCaseTest {
     @Mock
     private CreateProductRepository createProductRepository;
 
+    @Mock
+    private ExistsByNameProductRepository existsByNameProductRepository;
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        createProductUseCase = new CreateProductUseCase(productMapper, createProductRepository);
+        createProductUseCase = new CreateProductUseCase(productMapper, createProductRepository, existsByNameProductRepository);
     }
 
     @Test
@@ -47,8 +51,8 @@ public class CreateProductUseCaseTest {
 
         when(productMapper.toDomain(requestDto)).thenReturn(productDomain);
         when(productMapper.toEntity(productDomain)).thenReturn(productEntity);
-        when(createProductRepository.existsByName(TEST_PRODUCT)).thenReturn(false);
-        when(createProductRepository.save(productEntity)).thenReturn(productEntity);
+        when(existsByNameProductRepository.execute(TEST_PRODUCT)).thenReturn(false);
+        when(createProductRepository.execute(productEntity)).thenReturn(productEntity);
         when(productMapper.toDomain(productEntity)).thenReturn(productDomain);
         when(productMapper.toResponseDto(productDomain)).thenReturn(productResponseDto);
 
@@ -66,7 +70,7 @@ public class CreateProductUseCaseTest {
 
         when(productMapper.toDomain(requestDto)).thenReturn(productDomain);
         when(productMapper.toEntity(productDomain)).thenReturn(productEntity);
-        when(createProductRepository.existsByName(productEntity.getName())).thenReturn(true);
+        when(existsByNameProductRepository.execute(any())).thenReturn(true);
 
         assertThrows(ExistsProductByNameException.class, () -> createProductUseCase.execute(requestDto));
     }

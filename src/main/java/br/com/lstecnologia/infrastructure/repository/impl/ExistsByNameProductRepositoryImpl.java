@@ -1,20 +1,19 @@
 package br.com.lstecnologia.infrastructure.repository.impl;
 
-import br.com.lstecnologia.core.usecase.repository.CreateProductRepository;
-import br.com.lstecnologia.infrastructure.entity.ProductEntity;
+import br.com.lstecnologia.core.usecase.repository.ExistsByNameProductRepository;
 import br.com.lstecnologia.infrastructure.repository.JpaProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor
 @Repository
-public class CreateProductRepositoryImpl implements CreateProductRepository {
+public class ExistsByNameProductRepositoryImpl implements ExistsByNameProductRepository {
 
     private final JpaProductRepository productRepository;
 
     @Override
-    public ProductEntity execute(ProductEntity productEntity) {
-        return productRepository.save(productEntity);
+    public boolean execute(String name) {
+        return productRepository.existsByName(name);
     }
 
 }
