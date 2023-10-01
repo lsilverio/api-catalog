@@ -1,6 +1,6 @@
-# API de Catálogo de Produtos
+# API Catálogo de Produtos
 
-Bem-vindo à API de Catálogo de Produtos! Esta API está sendo contruída seguindo a Clean Architecture
+Bem-vindo à API Catálogo de Produtos! Esta API está sendo contruída seguindo a Clean Architecture
 
 ## Tecnologias Utilizadas
 
