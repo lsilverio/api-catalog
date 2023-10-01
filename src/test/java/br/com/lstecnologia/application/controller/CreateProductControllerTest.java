@@ -22,7 +22,6 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ActiveProfiles("test")
 @WebMvcTest(CreateProductController.class)
 @ExtendWith(SpringExtension.class)
 public class CreateProductControllerTest {

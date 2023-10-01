@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-@ActiveProfiles("test")
 public class CreateProductUseCaseTest {
 
     public static final String TEST_PRODUCT = "Test Product";
