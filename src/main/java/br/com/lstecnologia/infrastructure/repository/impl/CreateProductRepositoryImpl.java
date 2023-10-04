@@ -1,6 +1,6 @@
 package br.com.lstecnologia.infrastructure.repository.impl;
 
-import br.com.lstecnologia.core.usecase.repository.CreateProductRepository;
+import br.com.lstecnologia.core.repository.CreateProductRepository;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import br.com.lstecnologia.infrastructure.repository.JpaProductRepository;
 import lombok.RequiredArgsConstructor;

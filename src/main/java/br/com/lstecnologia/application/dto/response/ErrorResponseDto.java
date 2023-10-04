@@ -1,4 +1,4 @@
-package br.com.lstecnologia.application.controller.dto.response;
+package br.com.lstecnologia.application.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,8 +1,8 @@
 package br.com.lstecnologia.application.controller.exception;
 
-import br.com.lstecnologia.application.controller.dto.request.ProductRequestDto;
-import br.com.lstecnologia.application.controller.dto.response.ErrorResponseDto;
-import br.com.lstecnologia.core.domain.ProductDomain;
+import br.com.lstecnologia.application.dto.request.ProductRequestDto;
+import br.com.lstecnologia.application.dto.response.ErrorResponseDto;
+import br.com.lstecnologia.application.exception.GlobalExceptionHandler;
 import br.com.lstecnologia.core.exception.ExistsProductByNameException;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.MethodParameter;

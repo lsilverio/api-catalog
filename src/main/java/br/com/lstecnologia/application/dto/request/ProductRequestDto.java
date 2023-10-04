@@ -1,4 +1,4 @@
-package br.com.lstecnologia.application.controller.dto.request;
+package br.com.lstecnologia.application.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 

@@ -1,12 +1,12 @@
 package br.com.lstecnologia.core.usecase;
 
-import br.com.lstecnologia.application.controller.dto.request.ProductRequestDto;
-import br.com.lstecnologia.application.controller.dto.response.ProductResponseDto;
+import br.com.lstecnologia.application.dto.request.ProductRequestDto;
+import br.com.lstecnologia.application.dto.response.ProductResponseDto;
 import br.com.lstecnologia.core.domain.ProductDomain;
 import br.com.lstecnologia.core.exception.ExistsProductByNameException;
 import br.com.lstecnologia.core.mapper.ProductMapper;
-import br.com.lstecnologia.core.usecase.repository.CreateProductRepository;
-import br.com.lstecnologia.core.usecase.repository.ExistsByNameProductRepository;
+import br.com.lstecnologia.core.repository.CreateProductRepository;
+import br.com.lstecnologia.core.repository.ExistsByNameProductRepository;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package br.com.lstecnologia.core.usecase.repository;
+package br.com.lstecnologia.core.repository;
 
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 

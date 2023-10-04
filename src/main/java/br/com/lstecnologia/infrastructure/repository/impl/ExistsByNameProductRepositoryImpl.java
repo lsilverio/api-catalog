@@ -1,6 +1,6 @@
 package br.com.lstecnologia.infrastructure.repository.impl;
 
-import br.com.lstecnologia.core.usecase.repository.ExistsByNameProductRepository;
+import br.com.lstecnologia.core.repository.ExistsByNameProductRepository;
 import br.com.lstecnologia.infrastructure.repository.JpaProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
-package br.com.lstecnologia.application.controller.exception;
+package br.com.lstecnologia.application.exception;
 
-import br.com.lstecnologia.application.controller.dto.response.ErrorResponseDto;
+import br.com.lstecnologia.application.dto.response.ErrorResponseDto;
 import br.com.lstecnologia.core.exception.ExistsProductByNameException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;

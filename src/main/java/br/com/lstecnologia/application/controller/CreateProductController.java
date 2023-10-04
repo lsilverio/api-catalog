@@ -1,8 +1,8 @@
 package br.com.lstecnologia.application.controller;
 
-import br.com.lstecnologia.application.controller.dto.request.ProductRequestDto;
-import br.com.lstecnologia.application.controller.dto.response.ErrorResponseDto;
-import br.com.lstecnologia.application.controller.dto.response.ProductResponseDto;
+import br.com.lstecnologia.application.dto.request.ProductRequestDto;
+import br.com.lstecnologia.application.dto.response.ErrorResponseDto;
+import br.com.lstecnologia.application.dto.response.ProductResponseDto;
 import br.com.lstecnologia.application.service.CreateProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -38,7 +38,8 @@ public class CreateProductController {
 
         return ResponseEntity
                 .created(ServletUriComponentsBuilder
-                        .fromCurrentRequest().path("/{id}")
+                        .fromCurrentRequest()
+                        .path("/{id}")
                         .buildAndExpand(produtcResponseDto.getId())
                         .toUri())
                 .body(produtcResponseDto);

@@ -1,8 +1,8 @@
 package br.com.lstecnologia.application.controller.dto.response;
 
+import br.com.lstecnologia.application.dto.response.ErrorResponseDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,12 +1,11 @@
 package br.com.lstecnologia.core.mapper;
 
-import br.com.lstecnologia.application.controller.dto.request.ProductRequestDto;
-import br.com.lstecnologia.application.controller.dto.response.ProductResponseDto;
+import br.com.lstecnologia.application.dto.request.ProductRequestDto;
+import br.com.lstecnologia.application.dto.response.ProductResponseDto;
 import br.com.lstecnologia.core.domain.ProductDomain;
 import br.com.lstecnologia.infrastructure.entity.ProductEntity;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
