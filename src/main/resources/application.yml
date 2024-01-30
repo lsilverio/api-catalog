@@ -6,7 +6,7 @@ spring:
     name: api-catalog
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://host.docker.internal:3306/api_catalog?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://localhost:3306/api_catalog?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
   jpa:
