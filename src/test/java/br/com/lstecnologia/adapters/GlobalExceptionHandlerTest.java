@@ -19,10 +19,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Unit tests for the GlobalExceptionHandler class.
+ */
 class GlobalExceptionHandlerTest {
 
     private final GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
 
+    /**
+     * Test the handleValidationErrors method to ensure it returns a bad request with field errors.
+     */
     @Test
     void handleValidationErrors_shouldReturnBadRequestWithFieldErrors() {
         List<FieldError> fieldErrors = new ArrayList<>();
@@ -37,6 +43,9 @@ class GlobalExceptionHandlerTest {
         assertTrue(responseEntity.getBody().errors().containsValue("Name cannot be null"));
     }
 
+    /**
+     * Test the handleExistsProductByNameException method to ensure it returns a bad request with the correct error message.
+     */
     @Test
     void handleExistsProductByNameException_shouldReturnBadRequestWithErrorMessage() {
         ExistsProductByNameException ex = new ExistsProductByNameException("Product with this name already exists");
@@ -47,7 +56,11 @@ class GlobalExceptionHandlerTest {
         assertTrue(responseEntity.getBody().errors().containsValue("Product with this name already exists"));
     }
 
-    private MethodArgumentNotValidException createMethodArgumentNotValidException(ProductRequestDto productRequestDto, List<FieldError> fieldErrors) {
+    /**
+     * Helper method to create a MethodArgumentNotValidException with the provided product request and field errors.
+     */
+    private MethodArgumentNotValidException createMethodArgumentNotValidException(
+            ProductRequestDto productRequestDto, List<FieldError> fieldErrors) {
         BindingResult bindingResult = new BeanPropertyBindingResult(productRequestDto, "productRequestDto");
         fieldErrors.forEach(bindingResult::addError);
 
@@ -60,4 +73,5 @@ class GlobalExceptionHandlerTest {
     }
 
 }
+
 

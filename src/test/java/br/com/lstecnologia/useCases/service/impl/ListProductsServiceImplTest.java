@@ -1,4 +1,4 @@
-package br.com.lstecnologia.useCases.service;
+package br.com.lstecnologia.useCases.service.impl;
 
 import br.com.lstecnologia.useCases.dto.response.PageableResponseDto;
 import br.com.lstecnologia.useCases.dto.response.ProductResponseDto;
@@ -21,6 +21,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/**
+ * Unit tests for the ListProductsServiceImpl class.
+ */
 class ListProductsServiceImplTest {
 
     @Mock
@@ -37,6 +40,9 @@ class ListProductsServiceImplTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Verifies that ListProductsServiceImpl executes the list products operation successfully.
+     */
     @Test
     void shouldExecuteListProductsSuccessfully() {
         ProductModel productEntity = new ProductModel();
@@ -60,5 +66,4 @@ class ListProductsServiceImplTest {
 
         assertEquals(1, result.getTotalElements());
     }
-
 }
