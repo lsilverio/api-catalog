@@ -1,4 +1,4 @@
-package br.com.lstecnologia.adapter.controller;
+package br.com.lstecnologia.adapter;
 
 import br.com.lstecnologia.useCase.dto.response.ErrorResponseDto;
 import br.com.lstecnologia.useCase.service.exception.ExistsProductByNameException;
