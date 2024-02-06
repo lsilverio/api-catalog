@@ -18,6 +18,11 @@ import java.time.LocalDateTime;
 @Configuration
 public class ObjectMapperConfig {
 
+    /**
+     * Configures and provides the ObjectMapper bean for JSON serialization and deserialization.
+     *
+     * @return Configured ObjectMapper.
+     */
     @Bean
     protected ObjectMapper mapper() {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -35,4 +40,3 @@ public class ObjectMapperConfig {
     }
 
 }
-
